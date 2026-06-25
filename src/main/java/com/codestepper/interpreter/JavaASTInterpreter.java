@@ -253,7 +253,7 @@ public class JavaASTInterpreter {
                 // handle +=, -= etc
                 if (assign.getOperator() != AssignExpr.Operator.ASSIGN) {
                     Value left = env.get(name);
-                    right = performBinaryMath(left, right, getMathOp(assign.getOperator()));
+                    right = performBinaryOperation(left, right, getMathOp(assign.getOperator()));
                 }
                 
                 env.assign(name, right);
@@ -265,7 +265,7 @@ public class JavaASTInterpreter {
                 
                 if (assign.getOperator() != AssignExpr.Operator.ASSIGN) {
                     Value left = getArrayElement(arrayVal, indexVal.asNumber().intValue());
-                    right = performBinaryMath(left, right, getMathOp(assign.getOperator()));
+                    right = performBinaryOperation(left, right, getMathOp(assign.getOperator()));
                 }
                 
                 setArrayElement(arrayVal, indexVal.asNumber().intValue(), right);
