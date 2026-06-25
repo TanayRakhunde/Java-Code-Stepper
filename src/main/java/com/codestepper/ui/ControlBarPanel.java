@@ -27,18 +27,18 @@ public class ControlBarPanel extends JPanel {
         JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
         leftPanel.setBackground(Theme.BG_PANEL);
         
-        loadButton = createButton("Paste / Load Code");
+        loadButton = createPrimaryButton("Paste / Load Code");
         leftPanel.add(loadButton);
 
         JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
         centerPanel.setBackground(Theme.BG_PANEL);
         
-        startButton = createButton("▶ Start");
-        prevButton = createButton("◀ Prev Step");
-        nextButton = createButton("Next Step ▶");
-        runToEndButton = createButton("⏩ Run to End");
-        pauseButton = createButton("⏸ Pause");
-        resetButton = createButton("↺ Reset");
+        startButton = createPrimaryButton("â–¶ Start");
+        prevButton = createButton("â—€ Prev Step");
+        nextButton = createButton("Next Step â–¶");
+        runToEndButton = createButton("â© Run to End");
+        pauseButton = createButton("â¸ Pause");
+        resetButton = createButton("â†º Reset");
         
         centerPanel.add(startButton);
         centerPanel.add(prevButton);
@@ -86,15 +86,13 @@ public class ControlBarPanel extends JPanel {
 
     private JButton createButton(String text) {
         JButton btn = new JButton(text);
-        btn.setFont(Theme.FONT_UI_BOLD);
-        btn.setBackground(Theme.ACCENT_BLUE);
-        btn.setForeground(Color.WHITE);
-        btn.setFocusPainted(false);
-        btn.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Theme.ACCENT_BLUE.darker(), 1, true),
-                BorderFactory.createEmptyBorder(5, 15, 5, 15)
-        ));
-        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        Theme.styleSecondaryButton(btn);
+        return btn;
+    }
+    
+    private JButton createPrimaryButton(String text) {
+        JButton btn = new JButton(text);
+        Theme.stylePrimaryButton(btn);
         return btn;
     }
 
