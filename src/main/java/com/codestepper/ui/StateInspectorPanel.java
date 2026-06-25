@@ -36,11 +36,7 @@ public class StateInspectorPanel extends JPanel {
             }
         };
         variablesTable = new JTable(variablesModel);
-        variablesTable.setBackground(Theme.BG_PANEL);
-        variablesTable.setForeground(Theme.TEXT_NORMAL);
-        variablesTable.setGridColor(Theme.BORDER);
-        variablesTable.getTableHeader().setBackground(Theme.BG_MAIN);
-        variablesTable.getTableHeader().setForeground(Theme.TEXT_NORMAL);
+        Theme.styleTable(variablesTable);
         variablesTable.setFont(Theme.FONT_CODE);
         
         // Custom renderer to highlight changed rows
@@ -49,7 +45,7 @@ public class StateInspectorPanel extends JPanel {
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 String changed = (String) table.getValueAt(row, 3);
-                if ("✓".equals(changed)) {
+                if ("âœ“".equals(changed)) {
                     c.setBackground(Theme.HIGHLIGHT_CURRENT_LINE_BG);
                     c.setForeground(Theme.HIGHLIGHT_GUTTER_ARROW); // yellow text
                 } else {
@@ -116,7 +112,7 @@ public class StateInspectorPanel extends JPanel {
             }
             
             newPrevMap.put(name, valueStr);
-            variablesModel.addRow(new Object[]{name, type, valueStr, changed ? "✓" : ""});
+            variablesModel.addRow(new Object[]{name, type, valueStr, changed ? "âœ“" : ""});
         }
         previousVariableValues = newPrevMap;
 
